@@ -1,0 +1,84 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title> grid</title>
+<style>
+ 
+.flexx{
+min-height: 30px;
+    width: 10%;
+display:grid;
+justify-content:center;
+align-items:flex-end;
+
+
+}
+</style>
+</head>
+<body onload="myFunction()">
+<label for="search">Enter a new grid: </label>
+<input id="search" type="text">
+<button onclick = "clearBox('clear')" >Enter</button>
+<div class="flexx" id= "clear"  onmouseover="mouseOver()"  onmouseout="mouseOut()">
+</div>
+<script>
+  function mouseOut() {
+  document.getElementById("clear").style.color = "black";
+}
+  function mouseOver() {
+  document.getElementById("clear").style.color = "white";
+}
+ function clearBox(elementID) { 
+            var div = document.getElementById(elementID); 
+              
+            while(div.firstChild) { 
+                div.removeChild(div.firstChild); 
+            } 
+        } 
+var list = document.querySelector('div');
+const input = document.querySelector('input');
+const btn = document.querySelector('button');
+
+btn.addEventListener('click', function() {
+  let numOfGrid = input.value;
+  input.value = '';
+  input.focus();
+let name='20px';
+ for (let e = 0; e < numOfGrid-1; e++) {
+ name+= ' ' + '20px';}
+list.style.gridTemplateColumns=name;
+
+  for (let i = 0; i < numOfGrid; i++) {
+for (let j = 0; j < numOfGrid; j++) {
+var listItem = document.createElement('div');
+if(i%2===1){
+listItem.style.backgroundColor = 'blue';
+} else{listItem.style.backgroundColor = 'pink';}
+ listItem.textContent = i;
+ list.appendChild(listItem);
+    
+    }}
+  });
+
+
+  function myFunction() {
+let namee='20px';
+ for (let e = 0; e < 16-1; e++) {
+ namee+= ' ' + '20px';}
+list.style.gridTemplateColumns=namee;
+for (let i = 0; i < 16; i++) {
+for (let j = 0; j < 16; j++) {
+var listItem = document.createElement('div');
+if(i%2===1){
+listItem.style.backgroundColor = 'blue';
+} else{listItem.style.backgroundColor = 'pink';}
+ listItem.textContent = i;
+ list.appendChild(listItem);
+    
+    }}
+  }
+
+
+</script>
+</body>
+</html>
